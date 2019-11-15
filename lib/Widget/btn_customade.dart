@@ -9,6 +9,7 @@ class btnCostume extends StatelessWidget{
   double height = 0.0;
   double width = 0.0;
 
+
   btnCostume({this.color1, this.color2, this.name, this.actionTap, this.height, this.width});
 
   @override
@@ -20,7 +21,7 @@ class btnCostume extends StatelessWidget{
           height: height,
           width: width,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30.0),
+              borderRadius: BorderRadius.circular(10.0),
               gradient: LinearGradient(
                   colors:[
                     Color(color1),

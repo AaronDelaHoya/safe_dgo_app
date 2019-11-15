@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:safe_dgo_app/Users/Repository/user_provider.dart';
 import 'package:safe_dgo_app/Widget/btn_customade.dart';
+import 'package:safe_dgo_app/Widget/text_input.dart';
+import 'package:safe_dgo_app/Users/Block/user_block.dart';
 
 class login extends StatefulWidget{
   @override
@@ -10,6 +13,10 @@ class login extends StatefulWidget{
 
 }
 class _login extends State<login>{
+
+  TextEditingController controllerName = new TextEditingController();
+  TextEditingController controllerPassword = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -21,58 +28,27 @@ class _login extends State<login>{
           child: Column(
             children: <Widget>[
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 19.0),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30.0),
-                    color: Colors.white),
-                height: 55.0,
-                width: 380.0,
-                child: TextField(
-                  decoration: InputDecoration(
-                    icon: Icon(
-                      Icons.person,
-                      color: Colors.black,
-                    ),
-                    hintText: 'Ingresa tu nombre',
-                    labelText: 'Nombre',
-                    enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white, width: .1),
-                    ),
-                    focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white, width: 0.1),
-                    ),
-                  ),
-                ),
+                child: TextInType(
+                  hintText: "Nombre de Usuario",
+                  labelText: "Nombre",
+                  controller: controllerName,
+                )
               ),
               Container(
                 margin: EdgeInsets.only(top: 15.0),
-                padding: EdgeInsets.symmetric(horizontal: 19.0),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30.0),
-                    color: Colors.white),
-                height: 55.0,
-                width: 380.0,
-                child: TextField(
-                  decoration: InputDecoration(
-                    icon: Icon(
-                      Icons.vpn_key,
-                      color: Colors.black,
-                    ),
-                    hintText: 'Ingresa tu contraeña',
-                    labelText: 'Contraseña',
-                    enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white, width: 0.1),
-                    ),
-                    focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.cyan, width: 0.1),
-                    ),
-                  ),
-                ),
+                child: TextInType(
+                hintText: "Ingrese Contraseña",
+                labelText: "Contraseña",
+                controller: controllerPassword,
+              ),
               ),
               Container(
                   margin: EdgeInsets.only(top: 10.0),
                   child: btnCostume(
-                      actionTap: (){},
+                      actionTap: (){
+                        print('name: ${controllerName.text}, pass: ${controllerPassword.text}');
+                        bloc.saveUser(controllerName.text.toString(), controllerPassword.text.toString());
+                      },
                       color1: 0xFF0097a7,
                       color2: 0xFF0097a7,
                       name: "Iniciar Sesión",
@@ -91,7 +67,7 @@ class _login extends State<login>{
                       onPressed: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
-
+                              return null;
                             }));
                       },
                     )

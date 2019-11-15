@@ -13,14 +13,13 @@ class UserProviders {
     'Authorization': '<Your token>'
   };
 
-
-
-  final _url = 'https://gymmanager-api.now.sh/api/members';
+  final _url = 'https://safe-app.now.sh/api/customers/';
   Future<List<UserModel>> fetchTodoList() async {
     print('panggil data');
 
     // Peticion GET
     final response = await client.get(_url);
+    print(response.body);
     if (response.statusCode == 200) {
       // print(response.body.length);
       return compute(userFromJson, response.body);
@@ -31,14 +30,15 @@ class UserProviders {
   }
 
   // Peticion POST
-  Future createUser(name, email, password) async {
+  Future createUser(name, password) async {
 
     var tyson = {'name': name, 'password': password};
     String jsonTyson = jsonEncode(tyson);
 
-    final response = await client.post("$_url/members", headers: {"Content-Type":"application/json"},body: jsonTyson);
-    if (response.statusCode == 200) {
-      print(response.body);
+    final response = await client.post(_url, headers: {"Content-Type":"application/json"} ,body: jsonTyson);
+    print(response.body);
+    print(tyson);
+    if (response.statusCode == 201) {
       return response;
     } else {
       throw Exception('Failed to add data');
