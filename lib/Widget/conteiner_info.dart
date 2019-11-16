@@ -1,25 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:safe_dgo_app/costumer/costumer_model.dart';
 
 class ContainerInfo extends StatelessWidget{
 
-  final String nombre;
-  final Icons icon;
-  final
+  String title;
+  IconData icon;
+  double height;
+  double width;
+  double iconSize;
+  int iconColor;
 
-  ContainerInfo({this.nombre,this.icon});
+
+  ContainerInfo({this.title, this.icon, this.height,this.width,this.iconSize,this.iconColor});
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Container(
+      height: height,
+      width: width,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.0)
       ),
       child: Column(
         children: <Widget>[
-          Icon(),
-          Text(nombre)
+          Icon(
+            icon,
+            size: iconSize,
+            color: Color(iconColor),
+          ),
+          Text(title)
         ],
       ),
     );

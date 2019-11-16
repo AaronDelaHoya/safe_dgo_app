@@ -13,16 +13,18 @@ String userToJson(List<CostumerModel> data) {
 
 class CostumerModel{
   final String name;
+  final String email;
   final String age;
   final String direction;
   final String contact;
   final String insurance;
 
-  CostumerModel({this.name, this.age, this.direction, this.contact, this.insurance});
+  CostumerModel({this.name, this.email,this.age, this.direction, this.contact, this.insurance});
 
   factory CostumerModel.fromJson(Map<String, dynamic> json) => new CostumerModel(
       name: "name",
-      age: "age",
+      email: "email",
+      age : "age",
       direction: "direction",
       contact: "contact",
       insurance: "insurance"
@@ -30,6 +32,7 @@ class CostumerModel{
 
   Map<String, dynamic> toJson() =>{
     "name": name,
+    "email" : email,
     "age" : age,
     "direction" : direction,
     "contact" : contact,

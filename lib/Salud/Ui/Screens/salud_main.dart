@@ -2,6 +2,7 @@ import 'package:barcode_scan/barcode_scan.dart';
 import 'package:flutter/material.dart';
 import 'package:safe_dgo_app/Widget/btn_customade.dart';
 import 'package:flutter/services.dart';
+import 'package:safe_dgo_app/Widget/conteiner_info.dart';
 
 class SaludMain extends StatefulWidget{
   @override
@@ -31,10 +32,7 @@ class _SaludMain extends State<SaludMain>{
                   width: 180.0,
                   height: 50.0
               ),
-              Text(_barcode,
-                style: TextStyle(
-                    fontSize: 15.0
-                ),)
+
             ],
           )
       ),
